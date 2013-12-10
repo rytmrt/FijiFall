@@ -7,6 +7,7 @@ public class FallingObj: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		util.Reset(this.gameObject);
 	}
 	
 	// Update is called once per frame
