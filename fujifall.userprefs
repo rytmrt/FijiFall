@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Utility.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FallingObj.cs">
     <Files>
       <File FileName="Assets/Scripts/Catch.cs" Line="7" Column="1" />
       <File FileName="Assets/Scripts/Utility.cs" Line="13" Column="15" />
+      <File FileName="Assets/Scripts/FallingObj.cs" Line="21" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
