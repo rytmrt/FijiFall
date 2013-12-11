@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 public class Catch : MonoBehaviour {
 
 	private Utility util = Utility.GetInstance();
+	private Regex regex = new Regex ("FallingDummy*");
 
 	public MonoBehaviour spawnzero;
 
@@ -17,10 +19,19 @@ public class Catch : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		++ util.playerScore;
+		GameObject obj = collision.gameObject;
+
+		if (regex.IsMatch(obj.name))
+		{
+			-- util.playerScore;
+		}
+		else 
+		{
+			++ util.playerScore;
+		}
+
 		Debug.Log(util.playerScore);
 
-		GameObject obj = collision.gameObject;
 		util.DestroyFallObj(obj);
 	}
 
