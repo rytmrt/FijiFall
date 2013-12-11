@@ -5,6 +5,8 @@ public class FallingObj: MonoBehaviour {
 
 	private Utility util = Utility.GetInstance();
 
+	public MonoBehaviour spawnzero;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -14,7 +16,7 @@ public class FallingObj: MonoBehaviour {
 
 		if (this.gameObject.transform.position.y <= -8.5f)
 		{
-			util.Reset(this.gameObject);
+			util.DestroyFallObj(this.gameObject);
 		}
 	}
 }
