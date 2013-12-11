@@ -3,8 +3,16 @@ using UnityEngine;
 
 public class Utility
 {
+
+	private static Utility instance;
 	private System.Random rand = new System.Random();
-	static Utility instance;
+	private string[] prefabPath = {
+		"FallingSquirrel",
+		"FallingDummy"
+	};
+
+	public int numSpawnObj = 0;
+	public int playerScore = 0;
 
 	private Utility ()
 	{
@@ -16,13 +24,21 @@ public class Utility
 		return instance;
 	}
 
-	public void Reset (GameObject obj)
+	public void DestroyFallObj (GameObject obj)
 	{
-		obj.transform.localPosition = Vector3.zero;
-		obj.rigidbody.velocity = Vector3.zero;
-		obj.rigidbody.angularVelocity = Vector3.zero;
+		--numSpawnObj;
+		UnityEngine.Object.Destroy(obj);
+	}
 
-		obj.renderer.enabled = true;
+	public void SpawnFallObj (Transform parent)
+	{
+		++numSpawnObj;
+
+		int index = rand.Next(2);
+		UnityEngine.Object obj = UnityEngine.Object.Instantiate(Resources.Load(prefabPath[index]));
+		((GameObject)obj).transform.parent = parent;
+
+		((GameObject)obj).transform.localPosition = Vector3.zero;
 
 		Vector3 npos = new Vector3(0,0,0);
 		int angle_deg = rand.Next(180) + 180;
@@ -31,8 +47,6 @@ public class Utility
 		npos.x = (Mathf.Cos (angle) * 100);
 		npos.y = (Mathf.Sin (angle) * 100);
 
-		Debug.Log(npos);
-
-		obj.transform.rigidbody.AddForce(npos);
+		((GameObject)obj).transform.rigidbody.AddForce(npos);
 	}
 }

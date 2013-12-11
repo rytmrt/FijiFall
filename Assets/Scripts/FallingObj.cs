@@ -5,9 +5,10 @@ public class FallingObj: MonoBehaviour {
 
 	private Utility util = Utility.GetInstance();
 
+	public MonoBehaviour spawnzero;
+
 	// Use this for initialization
 	void Start () {
-		util.Reset(this.gameObject);
 	}
 	
 	// Update is called once per frame
@@ -15,7 +16,7 @@ public class FallingObj: MonoBehaviour {
 
 		if (this.gameObject.transform.position.y <= -8.5f)
 		{
-			util.Reset(this.gameObject);
+			util.DestroyFallObj(this.gameObject);
 		}
 	}
 }

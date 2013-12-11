@@ -3,8 +3,9 @@ using System.Collections;
 
 public class Catch : MonoBehaviour {
 
-	private int point = 0;
 	private Utility util = Utility.GetInstance();
+
+	public MonoBehaviour spawnzero;
 
 	// Use this for initialization
 	void Start () {
@@ -16,13 +17,11 @@ public class Catch : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		++ point;
-		Debug.Log(""+point);
+		++ util.playerScore;
+		Debug.Log(util.playerScore);
 
 		GameObject obj = collision.gameObject;
-		obj.renderer.enabled = false;
-
-		util.Reset(obj);
+		util.DestroyFallObj(obj);
 	}
 
 }
