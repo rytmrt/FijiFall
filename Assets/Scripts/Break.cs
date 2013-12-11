@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Break_2 : MonoBehaviour {
+public class Break : MonoBehaviour {
 
 	private int counter = 2;
+
+	public int break_count = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -12,10 +14,15 @@ public class Break_2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (counter <= 0) {
-			Destroy (this.gameObject);
+
+		if (break_count != 0) {
+			if (break_count == counter) {
+					Destroy (this.gameObject);
+			}
 		}
+
 	}
+	
 
 	void OnCollisionEnter(Collision collisionInfo){
 		counter--;
